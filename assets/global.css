@@ -1,0 +1,63 @@
+/* ======================= GOOGLE FONT ======================= */
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700&display=swap");
+:root {
+  /* ======== COLOR ======== */
+  --primary-color: #3c64b1;
+  --text-color: #373f41;
+  --text-color-light: #737b7d;
+  /* ======== FONT ======== */
+  --body-font: "Mulish", sans-serif;
+  /* ======== FONT WEIGHT======== */
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semi-bold: 600;
+  --fw-bold: 700;
+
+  /* Z-index */
+  --z-fixed: 10;
+  --z-modal: 100;
+
+  /* ======== HEADER HEIGHT ======== */
+  --header-height: 88px;
+}
+
+html {
+  font-family: var(--body-font);
+  box-sizing: border-box;
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-size: 1.4rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+button,
+input {
+  font-family: var(--body-font);
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: 1.4rem;
+}
+
+a[href] {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--text-color);
+  font-weight: var(--fw-bold);
+}
