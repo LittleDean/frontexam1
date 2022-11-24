@@ -23,7 +23,6 @@
 
 html {
   font-family: var(--body-font);
-  box-sizing: border-box;
   font-size: 62.5%;
   scroll-behavior: smooth;
 }
@@ -33,6 +32,7 @@ body {
 }
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }

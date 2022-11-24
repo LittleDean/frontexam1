@@ -31,8 +31,9 @@ $(document).ready(function () {
         })
     }
     handleShowNav();
-    $(window).scroll(function () {
 
+    // Handle Window On Scroll
+    $(window).scroll(function () {
         // Hanlde Content Slide In
         // About Slide
         aboutItems.forEach((item) => {
@@ -45,7 +46,7 @@ $(document).ready(function () {
         })
         // Handle Content Slide To Top
         function slideToTop(element) {
-            element.style.transform = 'translateX(0)'
+            element.style.transform = 'translateY(0)'
             element.style.visibility = 'visible'
             element.style.animation = '1.5s cubic-bezier(0, 0, 0.16, 0.68) 0s 1 normal none running slideToTop'
         }
@@ -55,7 +56,9 @@ $(document).ready(function () {
         }
         // Product Slide
         if (window.scrollY.toFixed() >= product.offsetTop - 600) {
-            slideToTop(product)
+            // slideToTop(product)
+            product.style.visibility = 'visible'
+            product.style.animation = '1s cubic-bezier(0, 0, 0.16, 0.68) 0s 1 normal none running visible'
         }
     })
 
@@ -69,4 +72,50 @@ $(document).ready(function () {
         }
     })
 
+    // Handle Product Auto Scroll
+    function handleProductScroll() {
+        const slide = document.querySelector('#product')
+        let slides = document.querySelectorAll('.product__item')
+        const interval = 3000;
+        let index = 0;
+        let slideId;
+
+
+        const firstClone = slides[0].cloneNode(true)
+        firstClone.id = 'first-clone'
+        slide.append(firstClone)
+
+        slides.forEach((item, index) => {
+            if (index != 0) {
+                slide.append(item.cloneNode(true))
+            }
+        })
+
+        const slideWidth = slides[index].clientWidth
+
+        const startSlide = () => {
+            slideId = setInterval(() => {
+                slide.style.transform = `translateX(${-slideWidth * (index + 1)}px)`
+                index++;
+                slide.style.transition = '2s'
+            }, interval)
+        }
+        startSlide();
+
+        slide.addEventListener('transitionend', () => {
+            slides = document.querySelectorAll('.product__item')
+            if (slides[index].id === firstClone.id) {
+                slide.style.transition = 'none'
+                index = 0
+                slide.style.transform = `translateX(0)`
+            }
+        })
+
+        slide.addEventListener('mouseenter', () => {
+            clearInterval(slideId)
+        })
+        slide.addEventListener('mouseleave', startSlide)
+
+    }
+    handleProductScroll();
 });
