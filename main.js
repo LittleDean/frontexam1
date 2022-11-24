@@ -95,8 +95,8 @@ $(document).ready(function () {
 
         const startSlide = () => {
             slideId = setInterval(() => {
-                slide.style.transform = `translateX(${-slideWidth * (index + 1)}px)`
                 index++;
+                slide.style.transform = `translateX(${-slideWidth * (index)}px)`
                 slide.style.transition = '2s'
             }, interval)
         }
